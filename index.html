@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f2f2f2;
+      padding-top: 100px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  <!-- BEGIN LivePerson Monitor. -->
+  <script type="text/javascript">
+    window.lpTag = window.lpTag || {};
+    if (typeof window.lpTag._tagCount === 'undefined') {
+      window.lpTag = {
+        site: '9994318',
+        _tagCount: 1,
+        protocol: 'https:',
+        events: {
+          bind: function (t, e, i) {
+            lpTag.defer(function () {
+              lpTag.events.bind(t, e, i);
+            }, 0);
+          },
+          trigger: function (t, e, i) {
+            lpTag.defer(function () {
+              lpTag.events.trigger(t, e, i);
+            }, 1);
+          }
+        },
+        defer: function (t, e) {
+          e === 0 ? (this._defB = this._defB || []).push(t)
+            : e === 1 ? (this._defT = this._defT || []).push(t)
+            : (this._defL = this._defL || []).push(t);
+        },
+        load: function (t, e, i) {
+          var n = this;
+          setTimeout(function () {
+            n._load(t, e, i);
+          }, 0);
+        },
+        _load: function (t, e, i) {
+          var n = t || this.protocol + '//lptag.liveperson.net/tag/tag.js?site=' + this.site;
+          var o = document.createElement('script');
+          o.setAttribute('charset', e || 'UTF-8');
+          if (i) o.setAttribute('id', i);
+          o.setAttribute('src', n);
+          document.head.appendChild(o);
+        },
+        init: function () {
+          this._timing = this._timing || {};
+          this._timing.start = new Date().getTime();
+          var t = this;
+          if (window.attachEvent) {
+            window.attachEvent('onload', function () {
+              t._domReady('domReady');
+            });
+          } else {
+            window.addEventListener('DOMContentLoaded', function () {
+              t._domReady('contReady');
+            }, false);
+            window.addEventListener('load', function () {
+              t._domReady('domReady');
+            }, false);
+          }
+          if (typeof window._lptStop === 'undefined') this.load();
+        },
+        _domReady: function (t) {
+          if (!this.isDom) {
+            this.isDom = true;
+            this.events.trigger('LPT', 'DOM_READY', { t: t });
+          }
+          this._timing[t] = new Date().getTime();
+        },
+        vars: [],
+        dbs: [],
+        ctn: [],
+        sdes: [],
+        hooks: [],
+        identities: [],
+        ev: []
+      };
+      lpTag.init();
+    } else {
+      window.lpTag._tagCount += 1;
+    }
+  </script>
+  <!-- END LivePerson Monitor. -->
+</head>
+<body>
+  <h1>Welcome to the Demo App</h1>
+  <p>You are currently unauthenticated.</p>
+  <button onclick="login()">Login (Simulate OAuth Implicit Flow)</button>
+
+  <script>
+    // Simulated JWT token (normally obtained from an OAuth provider)
+    const fakeJWT = "eyFake.JWT.Token12345";
+
+    function login() {
+      // Simulate redirect with token as if returned from OAuth provider
+      localStorage.setItem("jwt", fakeJWT);
+    
+      window.location.href = "dashboard.html";
+    }
+  </script>
+</body>
+</html>
